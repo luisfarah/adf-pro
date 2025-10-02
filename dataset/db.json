@@ -1,0 +1,17 @@
+{
+	"name": "db",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "source",
+			"table": "Orders"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

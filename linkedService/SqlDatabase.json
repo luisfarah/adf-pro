@@ -1,0 +1,17 @@
+{
+	"name": "SqlDatabase",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "adfservermx.database.windows.net",
+			"database": "dbadfmx",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "adminrf",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEUyMzZERkE3LUZBQjMtNEI5Ni04QTg5LUQzMkI4Qjg4RjFGNl8yOTY0Y2MzZi0yNWQ4LTRkMmMtYWI2NS1jZGU2NDAyMGZlNjYiDQp9"
+		}
+	}
+}
