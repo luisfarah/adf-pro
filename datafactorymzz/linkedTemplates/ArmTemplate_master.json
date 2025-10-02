@@ -1,0 +1,125 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "datafactorymzz"
+		},
+		"SqlDatabase_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SqlDatabase'"
+		},
+		"adlsto_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'adlsto'"
+		},
+		"SqlDatabase_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "adfservermx.database.windows.net"
+		},
+		"SqlDatabase_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "dbadfmx"
+		},
+		"SqlDatabase_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "adminrf"
+		},
+		"adlsto_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adfstorf.dfs.core.windows.net/"
+		},
+		"ls_rest_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pokeapi.co/api/v2/pokemon"
+		},
+		"schedule_properties_schedule_parameters_schema": {
+			"type": "string",
+			"defaultValue": "source"
+		},
+		"schedule_properties_schedule_parameters_table": {
+			"type": "string",
+			"defaultValue": "orders"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "datafactorymzz_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"SqlDatabase_password": {
+						"value": "[parameters('SqlDatabase_password')]"
+					},
+					"adlsto_accountKey": {
+						"value": "[parameters('adlsto_accountKey')]"
+					},
+					"SqlDatabase_properties_typeProperties_server": {
+						"value": "[parameters('SqlDatabase_properties_typeProperties_server')]"
+					},
+					"SqlDatabase_properties_typeProperties_database": {
+						"value": "[parameters('SqlDatabase_properties_typeProperties_database')]"
+					},
+					"SqlDatabase_properties_typeProperties_userName": {
+						"value": "[parameters('SqlDatabase_properties_typeProperties_userName')]"
+					},
+					"adlsto_properties_typeProperties_url": {
+						"value": "[parameters('adlsto_properties_typeProperties_url')]"
+					},
+					"ls_rest_properties_typeProperties_url": {
+						"value": "[parameters('ls_rest_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "datafactorymzz_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"schedule_properties_schedule_parameters_schema": {
+						"value": "[parameters('schedule_properties_schedule_parameters_schema')]"
+					},
+					"schedule_properties_schedule_parameters_table": {
+						"value": "[parameters('schedule_properties_schedule_parameters_table')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'datafactorymzz_ArmTemplate_0')]"
+			]
+		}
+	]
+}

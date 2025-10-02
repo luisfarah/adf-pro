@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "datafactorymzz"
+		},
+		"SqlDatabase_password": {
+			"value": ""
+		},
+		"adlsto_accountKey": {
+			"value": ""
+		},
+		"SqlDatabase_properties_typeProperties_server": {
+			"value": "adfservermx.database.windows.net"
+		},
+		"SqlDatabase_properties_typeProperties_database": {
+			"value": "dbadfmx"
+		},
+		"SqlDatabase_properties_typeProperties_userName": {
+			"value": "adminrf"
+		},
+		"adlsto_properties_typeProperties_url": {
+			"value": "https://adfstorf.dfs.core.windows.net/"
+		},
+		"ls_rest_properties_typeProperties_url": {
+			"value": "https://pokeapi.co/api/v2/pokemon"
+		},
+		"schedule_properties_schedule_parameters_schema": {
+			"value": "source"
+		},
+		"schedule_properties_schedule_parameters_table": {
+			"value": "orders"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
