@@ -48,7 +48,7 @@
 				"source1 derive(state_upper = upper(state)) ~> UpperState",
 				"UpperState select(mapColumn(",
 				"          location_id,",
-				"          {state upper} = state_upper,",
+				"          state_upper,",
 				"          city,",
 				"          country,",
 				"          last_updated_timestamp",
